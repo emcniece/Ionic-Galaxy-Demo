@@ -1,9 +1,19 @@
 <ion-view title="Dashboard">
   <ion-content class="padding">
+
+	  <div class="bar bar-header item-input-inset">
+	  <label class="item-input-wrapper">
+	    <i class="icon ion-ios7-search placeholder-icon"></i>
+	    <input type="search" placeholder="Search by Stock Number" ng-model="stockNum">
+	  </label>
+	  <button class="button button-clear">
+	    Cancel
+	  </button>
+	</div>
     <h1>Inventory</h1>
 
     <div class="row responsive-md" ng-repeat="rows in vehicleData">
-		<div class="list card col" ng-repeat="vehicle in rows">
+		<div class="list card col" ng-repeat="vehicle in rows | filter: { StockNumber: stockNum}">
 
 		  <div class="item item-avatar">
 		    <img src="img/logo.png">
