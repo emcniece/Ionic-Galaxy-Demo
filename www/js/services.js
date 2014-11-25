@@ -22,5 +22,28 @@ angular.module('starter.services', [])
       // Simple index lookup
       return friends[friendId];
     }
-  }
-});
+  };
+})
+
+.factory('Vehicles', function($http) {
+  // Might use a resource here that returns a JSON array
+
+  var vehicles = [];
+  $http.get('/inventory-data.json').success (function(data){
+    console.log(data);
+    vehicles = data;
+  });
+  
+
+  return {
+    all: function() {
+      return vehicles;
+    },
+    get: function(vehicleId) {
+      // Simple index lookup
+      return vehicles[vehicleId];
+    }
+  };
+})
+
+;
