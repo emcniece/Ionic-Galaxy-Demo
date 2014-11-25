@@ -1,1 +1,13 @@
 /* Empty. Add your own CSS if you like */
+.col.card{
+
+	box-shadow:none;
+}
+p.vehicle-desc {
+	max-height: 100px;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 15px;
+	position: relative;
+}

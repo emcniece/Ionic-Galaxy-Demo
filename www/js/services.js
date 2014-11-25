@@ -1,49 +1,40 @@
 angular.module('starter.services', [])
 
-/**
- * A simple example service that returns some data.
- */
-.factory('Friends', function() {
+.factory('Vehicles', function($rootScope, $http) {
   // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var friends = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
-  ];
 
   return {
     all: function() {
-      return friends;
-    },
-    get: function(friendId) {
-      // Simple index lookup
-      return friends[friendId];
-    }
-  };
-})
+      return $http.get('/inventory-data.json');
 
-.factory('Vehicles', function($http) {
-  // Might use a resource here that returns a JSON array
-
-  var vehicles = [];
-  $http.get('/inventory-data.json').success (function(data){
-    console.log(data);
-    vehicles = data;
-  });
-  
-
-  return {
-    all: function() {
-      return vehicles;
     },
     get: function(vehicleId) {
       // Simple index lookup
+      angular.forEach($rootScope.vehicles, function(dealer, key){
+        console.log(dealer, key);
+      })
       return vehicles[vehicleId];
     }
   };
 })
 
+.filter('cut', function () {
+  return function (value, wordwise, max, tail) {
+      if (!value) return '';
+
+      max = parseInt(max, 10);
+      if (!max) return value;
+      if (value.length <= max) return value;
+
+      value = value.substr(0, max);
+      if (wordwise) {
+          var lastspace = value.lastIndexOf(' ');
+          if (lastspace != -1) {
+              value = value.substr(0, lastspace);
+          }
+      }
+
+      return value + (tail || ' …');
+  }
+})
 ;

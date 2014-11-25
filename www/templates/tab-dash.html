@@ -1,11 +1,42 @@
 <ion-view title="Dashboard">
   <ion-content class="padding">
-    <h1>Dash</h1>
+    <h1>Inventory</h1>
 
-    <div class="row">
-		<div class="col">test</div>
-		<div class="col">test</div>
-		<div class="col">test</div>
+    <div class="row responsive-md" ng-repeat="rows in vehicleData">
+		<div class="list card col" ng-repeat="vehicle in rows">
+
+		  <div class="item item-avatar">
+		    <img src="img/logo.png">
+		    <h2>{{vehicle.Year}} {{vehicle.Make}} {{vehicle.Model}}</h2>
+		    <p>Galaxy Motors - Nanaimo</p>
+		  </div>
+
+		  <div class="item item-body">
+		    <img class="full-image" src="http://autofeeds.ca/{{vehicle.Photos[0].Url}}">
+		    <p class="vehicle-desc">{{vehicle.Description | cut:true:100:' ...'}}</p>
+		    <ul class="list">
+				<li class="item item-icon-left">
+					<i class="icon ion-ios7-pricetags-outline"></i>
+					Stock Number
+					<span class="item-note">{{vehicle.StockNumber}}</span>
+				</li>
+
+		    </ul>
+		  </div>
+
+		  <div class="item tabs tabs-secondary tabs-icon-left">
+		    <a class="tab-item" href="#">
+		      <i class="icon ion-social-usd"></i>
+		      {{vehicle.Price | currency:""}}
+		    </a>
+		    <a class="tab-item" href="#">
+		      <i class="icon ion-share"></i>
+		      Edit
+		    </a>
+		  </div>
+
+		</div>
+
     </div>
   </ion-content>
 </ion-view>
