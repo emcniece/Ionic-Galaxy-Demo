@@ -10,10 +10,16 @@ angular.module('starter.services', [])
     },
     get: function(vehicleId) {
       // Simple index lookup
+      var vehicle = false;
       angular.forEach($rootScope.vehicles, function(dealer, key){
-        console.log(dealer, key);
-      })
-      return vehicles[vehicleId];
+        console.log( dealer[vehicleId], typeof(dealer[vehicleId]) );
+        if(typeof(dealer[vehicleId]) === 'object'){
+          vehicle = dealer[vehicleId];
+        }
+      });
+
+      return vehicle;
+
     }
   };
 })

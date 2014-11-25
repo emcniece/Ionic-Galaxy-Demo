@@ -22,7 +22,9 @@
 		  </div>
 
 		  <div class="item item-body">
-		    <img class="full-image" src="http://autofeeds.ca/{{vehicle.Photos[0].Url}}">
+		  	<a href="/#/tab/vehicle/{{vehicle.VehicleID}}">
+		    	<img class="full-image" src="http://autofeeds.ca/{{vehicle.Photos[0].Url}}">
+		    </a>
 		    <p class="vehicle-desc">{{vehicle.Description | cut:true:100:' ...'}}</p>
 		    <ul class="list">
 				<li class="item item-icon-left">
@@ -39,7 +41,7 @@
 		      <i class="icon ion-social-usd"></i>
 		      {{vehicle.Price | currency:""}}
 		    </a>
-		    <a class="tab-item" href="#">
+		    <a class="tab-item" href="/#/tab/vehicle/{{vehicle.VehicleID}}">
 		      <i class="icon ion-share"></i>
 		      Edit
 		    </a>
